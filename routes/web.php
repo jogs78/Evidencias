@@ -12,5 +12,22 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
+
+Route::get('/docente', function () {
+    return view('docente.docente');
+});
+
+Route::get('/estudiante', function () {
+    return view('estudiante.estudiante');
+});
+
+Route::get('/dejar', function () {
+    return view('docente.dejar');
+});
+
+Route::get('/calificar', function () {
+    return view('docente.calificar');
+});
+
