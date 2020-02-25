@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\EvidenciaController;
+
 Route::get('/', function () {
     return view('inicio');
 });
@@ -19,15 +21,6 @@ Route::get('/docente', function () {
     return view('docente.docente');
 });
 
-Route::get('/estudiante', function () {
-    return view('estudiante.estudiante');
-});
-
-Route::get('/dejar', function () {
-    return view('docente.dejar');
-});
-
-Route::get('/calificar', function () {
-    return view('docente.calificar');
-});
-
+Route::get('/estudiante', 'escon@listar');
+Route::get('/dejar', 'EvidenciaController@dejar');
+Route::get('/calificar', 'EvidenciaController@calificar');
