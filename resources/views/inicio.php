@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INICIO</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/js/popper.js"></script>
+    <title>Inicio</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/js/bootstrap.min.js"></script>
-
+    <script src="/js/popper.js"></script>
 </head>
 <body>
-    Entrar:<br>
-    <a class="btn btn-primary"  href="/estudiantes">SISTEMA PARA ESTUDIANTES</a>
-    <br>
-    <br>
-    <a class="btn btn-primary"  href="/estudiantes">SISTEMA PARA PROFESOR </a>
+    SISTEMA DE EVIDENCIAS
+    <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    <hr>
+    <a class="btn btn-primary" href="/docente">ENTRAR COMO DOCENTE</a>
+    <a class="btn btn-secondary" href="/estudiante">ENTRAR COMO ESTUDIANTE</a>
 </body>
 </html>
