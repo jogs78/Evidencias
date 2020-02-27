@@ -23,11 +23,8 @@ Route::get('/estudiante', function () {
     return view('estudiante.estudiante');
 });
 
-Route::get('/dejar', function () {
-    return view('docente.dejar');
+Route::get('/dejar',     'EvidenciaController@dejar');
+Route::get('/calificar', 'EvidenciaController@calificar');
+Route::get('/seleccionar', function () {
+    return view('docente.grupos');
 });
-
-Route::get('/calificar', function () {
-    return view('docente.calificar');
-});
-

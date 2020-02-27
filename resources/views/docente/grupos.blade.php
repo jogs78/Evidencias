@@ -1,5 +1,6 @@
 @extends('plantilla_docente')
 @section('content')
+
 <table class="table table-hover">
     <thead>
       <tr>
@@ -36,4 +37,6 @@
       </tr>
     </tbody>
   </table>
+
+
 @endsection
