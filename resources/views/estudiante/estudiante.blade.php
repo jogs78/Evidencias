@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-    EVIDENCIAS PRESENTADAS POR EL ESTUDIANTE __________
+    EVIDENCIAS PRESENTADAS POR EL ESTUDIANTE {{$nombre}}
     <hr>
     <table class="table table-sm table-dark">
         <thead>

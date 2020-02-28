@@ -21,6 +21,6 @@ Route::get('/docente', function () {
     return view('docente.docente');
 });
 
-Route::get('/estudiante', 'escon@listar');
+Route::get('/estudiante/{control}', 'escon@listar');
 Route::get('/dejar', 'EvidenciaController@dejar');
 Route::get('/calificar', 'EvidenciaController@calificar');
