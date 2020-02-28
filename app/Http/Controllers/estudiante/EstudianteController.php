@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\docente;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class EvidenciaController extends Controller
+class EstudianteController extends Controller
 {
     function dejar() {
-        return view('docente.dejar');
+        return view('docente.evidencias.dejar');
     }
 
     function calificar() {
@@ -16,6 +17,6 @@ class EvidenciaController extends Controller
         //ver de que evidencia se trata
         //asignar calificacion a cada rubro
         //sacar promedio general
-        return view('docente.calificar');
+        return view('docente.evidencias.calificar');
     }
 }

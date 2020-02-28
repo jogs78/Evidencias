@@ -17,33 +17,25 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Evidencia</a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="/dejar">Dejar</a>
-                      <a class="dropdown-item" href="/calificar">Calificar</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">TIPO DE EVIDENCIA</a>
+                      <a class="dropdown-item" href="/listar_evidencias">Calificar</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Estudiantes</a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/dejar">Pasar lista</a>
-                    <a class="dropdown-item" href="/calificar">Agrupar</a>
+                    <a class="dropdown-item" href="/lista">Pasar lista</a>
+                    <a class="dropdown-item" href="/agrupar">Agrupar</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Rubricas</a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/dejar">Crear</a>
-                    <a class="dropdown-item" href="/calificar">Asignar</a>
+                    <a class="dropdown-item" href="/crear">Crear</a>
                   </div>
                 </li>
-                <li class="nav-item dropdown invisible">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Rubricas</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/dejar">Crear</a>
-                    <a class="dropdown-item" href="/calificar">Asignar</a>
-                  </div>
+                <li class="nav-item">
+                  <a class="nav-link"   href="/grupo">Grupos</a>
                 </li>
-
               </ul>
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">

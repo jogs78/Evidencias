@@ -15,16 +15,24 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::get('/docente', function () {
-    return view('docente.docente');
-});
+
 
 Route::get('/estudiante', function () {
     return view('estudiante.estudiante');
 });
 
-Route::get('/dejar',     'EvidenciaController@dejar');
-Route::get('/calificar', 'EvidenciaController@calificar');
+
+
+Route::get('/historico',     'docente\EstudianteController@historico');
+Route::get('/docente',     'docente\GrupoController@seleccionar');
+Route::get('/grupo',     'docente\GrupoController@grupo');
+Route::get('/dejar',     'docente\EvidenciaController@dejar');
+Route::get('/listar_evidencias', 'docente\EvidenciaController@listar_evidencias');
+Route::get('/calificar', 'docente\EvidenciaController@calificar');
+Route::get('/lista',     'docente\EstudianteController@lista');
+Route::get('/agrupar', 'docente\EstudianteController@agrupar');
+Route::get('/crear', 'docente\RubricaController@crear');
+
 Route::get('/seleccionar', function () {
     return view('docente.grupos');
 });
