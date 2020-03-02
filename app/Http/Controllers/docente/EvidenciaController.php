@@ -20,12 +20,22 @@ class EvidenciaController extends Controller
         return view('docente.evidencias.listar_evidencias');
     }
 
-    function calificar() {
+
+    function equipos_grupo() {
         //ver que alumnos son
         //ver de que equipo
         //ver de que evidencia se trata
         //asignar calificacion a cada rubro
         //sacar promedio general
-        return view('docente.evidencias.calificar');
+        return view('docente.evidencias.equipos_grupo');
+    }    
+
+    function valorar() {
+        //ver que alumnos son
+        //ver de que equipo
+        //ver de que evidencia se trata
+        //asignar calificacion a cada rubro
+        //sacar promedio general
+        return view('docente.evidencias.valorar');
     }    
 }

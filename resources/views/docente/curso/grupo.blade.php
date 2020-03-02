@@ -10,48 +10,40 @@ Seleccione el grupo con el que trabajará<br>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr class="text-muted">
         <td>Agosto - Diciembre 2193</td>
         <td><a href="/lista">s8a</a></td>
         <td>
-          <button class="btn btn-primary">Editar</button>
-          <button class="btn btn-secondary">Activar</button>
-          <a href="/agregar_alumnos" class="btn btn-info">Agregar Alumnos</a>
-          <button class="btn btn-danger">Eliminar</button>
         </td>
       </tr>
-      <tr>
+      <tr class="text-muted">
         <td>Agosto - Diciembre 2193</td>
-        <td><a href="/lista">s8a</a></td>
+        <td><a href="/lista">s8b</a></td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>Enero - Junio de 2020</td>
+        <td><a href="/diario">s8a</a></td>
         <td>
           <button class="btn btn-primary">Editar</button>
           <button class="btn btn-secondary">Activar</button>
-          <a href="/agregar_alumnos" class="btn btn-info">Agregar Alumnos</a>
+          <a href="/agregar_estudiante" class="btn btn-info">Matricular</a>
           <button class="btn btn-danger">Eliminar</button>
         </td>
       </tr>
       <tr>
-        <td>Enero - Junio de 2201</td>
-        <td><a href="/lista">s8a</a></td>
+        <td>Enero - Junio de 2020</td>
+        <td><a href="/diario">s8b</a></td>
         <td>
           <button class="btn btn-primary">Editar</button>
           <button class="btn btn-secondary">Activar</button>
-          <a href="/agregar_alumnos" class="btn btn-info">Agregar Alumnos</a>
-          <button class="btn btn-danger">Eliminar</button>
-        </td>
-      </tr>
-      <tr>
-        <td>2201</td>
-        <td><a href="/lista">s8a</a></td>
-        <td>
-          <button class="btn btn-primary">Editar</button>
-          <button class="btn btn-secondary">Activar</button>
-          <a href="/agregar_alumnos" class="btn btn-info">Agregar Alumnos</a>
+          <a href="/agregar_estudiante" class="btn btn-info">Matricular</a>
           <button class="btn btn-danger">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <button class="btn btn-success">AGREGAR</button>
+  <a href="agregar_curso" class="btn btn-success">AGREGAR</a>
 
 @endsection

@@ -19,7 +19,15 @@
           <option value="">Rubrica 4</option>
           <option value="">Rubrica 5</option>
       </select>
-
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Unidad:</label>
+      <select class="form-control" id="exampleFormControlInput1" name="" id="">
+          <option value="">1</option>
+          <option value="">2</option>
+          <option value="">3</option>
+          <option value="">4</option>
+      </select>
     </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Investigacion</label>
@@ -29,6 +37,5 @@
         <label for="exampleFormControlTextarea1">Desarrollo</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
-      
     </form>
 @endsection

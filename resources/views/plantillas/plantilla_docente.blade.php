@@ -13,28 +13,14 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Evidencia</a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="/dejar">Dejar</a>
-                      <a class="dropdown-item" href="/listar_evidencias">Calificar</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Estudiantes</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/lista">Pasar lista</a>
-                    <a class="dropdown-item" href="/agrupar">Agrupar</a>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Rubricas</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/crear">Crear</a>
-                  </div>
+                <li class="nav-item">
+                  <a class="nav-link"   href="/listar_evidencias">Evidencias</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"   href="/grupo">Grupos</a>
+                  <a class="nav-link"   href="/listar_rubricas">Rubricas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"   href="/curso">Curso</a>
                 </li>
               </ul>
               <ul class="navbar-nav ml-auto">

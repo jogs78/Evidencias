@@ -9,9 +9,15 @@ class EstudianteController extends Controller
 {
     function historico() {
         return view('docente.estudiantes.historico');
-    }
+    }    
     function lista() {
         return view('docente.estudiantes.lista');
+    }
+    function diario() {
+        return view('docente.estudiantes.diario');
+    }
+    function matricular() {
+        return view('docente.estudiantes.matricular');
     }
     function agrupar() {
         //ver que alumnos son
@@ -21,4 +27,8 @@ class EstudianteController extends Controller
         //sacar promedio general
         return view('docente.estudiantes.agrupar');
     }
+    function agregar_estudiante() {
+        return view('docente.estudiantes.agregar_estudiante');
+    }
+
 }

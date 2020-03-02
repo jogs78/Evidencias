@@ -23,15 +23,31 @@ Route::get('/estudiante', function () {
 
 
 
-Route::get('/historico',     'docente\EstudianteController@historico');
-Route::get('/docente',     'docente\GrupoController@seleccionar');
-Route::get('/grupo',     'docente\GrupoController@grupo');
-Route::get('/dejar',     'docente\EvidenciaController@dejar');
+
+
+Route::get('/agregar_curso',     'docente\CursoController@agregar_curso');
+Route::get('/docente',     'docente\CursoController@seleccionar');
+Route::get('/curso',     'docente\CursoController@grupo');
+
+Route::get('/dejar',             'docente\EvidenciaController@dejar');
 Route::get('/listar_evidencias', 'docente\EvidenciaController@listar_evidencias');
-Route::get('/calificar', 'docente\EvidenciaController@calificar');
-Route::get('/lista',     'docente\EstudianteController@lista');
-Route::get('/agrupar', 'docente\EstudianteController@agrupar');
-Route::get('/crear', 'docente\RubricaController@crear');
+Route::get('/equipos_grupo',           'docente\EvidenciaController@equipos_grupo');
+Route::get('/valorar',           'docente\EvidenciaController@valorar');
+
+
+Route::get('/diario',    'docente\EstudianteController@diario');
+Route::get('/lista',    'docente\EstudianteController@lista');
+Route::get('/agrupar',  'docente\EstudianteController@agrupar');
+Route::get('/historico','docente\EstudianteController@historico');
+Route::get('/matricular','docente\EstudianteController@matricular');
+Route::get('/agregar_estudiante','docente\EstudianteController@agregar_estudiante');
+
+
+
+
+Route::get('/listar_rubricas', 'docente\RubricaController@listar_rubricas');
+Route::get('/crear_rubrica', 'docente\RubricaController@crear_rubrica');
+Route::get('/crear_criterio', 'docente\RubricaController@crear_criterio');
 
 Route::get('/seleccionar', function () {
     return view('docente.grupos');

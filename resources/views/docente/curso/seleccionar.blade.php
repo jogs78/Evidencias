@@ -11,28 +11,14 @@ Seleccione el grupo con el que trabajará<br>
     </thead>
     <tbody>
       <tr>
-        <td>Agosto - Diciembre 2193</td>
+        <td>Enero - Junio de 2020</td>
         <td>s8a</td>
         <td>
           <button class="btn btn-secondary">Activar</button>
         </td>
       </tr>
       <tr>
-        <td>Agosto - Diciembre 2193</td>
-        <td>s8b</td>
-        <td>
-          <button class="btn btn-secondary">Activar</button>
-        </td>
-      </tr>
-      <tr>
-        <td>Enero - Junio de 2201</td>
-        <td>s8a</td>
-        <td>
-          <button class="btn btn-secondary">Activar</button>
-        </td>
-      </tr>
-      <tr>
-        <td>2201</td>
+        <td>Enero - Junio de 2020</td>
         <td>s8b</td>
         <td>
           <button class="btn btn-secondary">Activar</button>
