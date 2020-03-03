@@ -4,7 +4,6 @@
 <h5 class="card-title">Evidencia ###</h5><br>
 <h5 class="card-title">Dejada para el grupo: "s8_ de Enero-Junio de 2020"</h5><br>
 
-
 <form>
     <div class="form-group">
       <label for="exampleFormControlInput1">Titulo de la evidencia</label>

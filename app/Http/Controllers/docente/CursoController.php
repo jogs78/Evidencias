@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 
 class CursoController extends Controller
 {
-    function grupo() {
-        return view('docente.curso.grupo');
+    function listar_cursos() {
+        return view('docente.curso.listar_cursos');
     }
     function seleccionar() {
         return view('docente.curso.seleccionar');
@@ -16,7 +16,10 @@ class CursoController extends Controller
     function agregar_curso() {
         return view('docente.curso.agregar');
     }
-
+    function agregar_unidad() {
+        return view('docente.unidad.agregar_unidad');
+    }
+    
     
 
 }

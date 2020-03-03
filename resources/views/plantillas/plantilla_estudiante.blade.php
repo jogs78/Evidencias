@@ -13,22 +13,8 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link"   href="/listar_evidencias">Evidencias</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link"   href="/listar_rubricas">Rubricas</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link"   href="/listar_cursos">Curso</a>
-                </li>
               </ul>
-
               <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link"   href="/seleccionar">Seleccionar Curso</a>
-                </li>
-
                 <li class="nav-item">
                   <a class="nav-link " href="http://evidencias.local/">Salir</a>
                 </li>  

@@ -4,10 +4,9 @@
 
     <div class="card">
       <div class="card-header">
-        (finalizado) Curso xyz
+        Curso xyz
       </div>
       <div class="card-body">
-        <a href="/historicoe">HISTORICO</a><br>
         Fecha Incio: __________        Fecha Fin: __________
         Calificacion obtenida : ##
       </div>
@@ -15,12 +14,11 @@
     
     <div class="card">
       <div class="card-header">
-        (en curso) Curso abc 
+        Curso abc (en curso)
       </div>
       <div class="card-body">
-        <a href="/historicoe">HISTORICO</a><br>
         Fecha Incio: __________        Fecha Fin: __________
-        
+        <a href="/historico">HISTORICO</a><br>
         <ul>
           <li><a href="/entregar">Evidencia 101</a></li>
           <li><a href="/entregar">Evidencia 102</a></li>
@@ -38,4 +36,35 @@
       </div>
     </div>
 
+
+    <hr>
+    <table class="table table-sm table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
 @endsection

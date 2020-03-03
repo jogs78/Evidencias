@@ -17,17 +17,19 @@ Route::get('/', function () {
 
 
 
-Route::get('/estudiante', function () {
-    return view('estudiante.estudiante');
-});
-
+Route::get('/estudiante', 'estudiante\EstudianteController@index');
+Route::get('/entrega', 'estudiante\EstudianteController@entrega');
+Route::get('/historicoe','estudiante\EstudianteController@historicoe');
 
 
 
 
 Route::get('/agregar_curso',     'docente\CursoController@agregar_curso');
-Route::get('/docente',     'docente\CursoController@seleccionar');
-Route::get('/curso',     'docente\CursoController@grupo');
+Route::get('/seleccionar',     'docente\CursoController@seleccionar');
+Route::get('/listar_cursos',     'docente\CursoController@listar_cursos');
+Route::get('/agregar_unidad',     'docente\CursoController@agregar_unidad');
+
+
 
 Route::get('/dejar',             'docente\EvidenciaController@dejar');
 Route::get('/listar_evidencias', 'docente\EvidenciaController@listar_evidencias');
@@ -49,6 +51,3 @@ Route::get('/listar_rubricas', 'docente\RubricaController@listar_rubricas');
 Route::get('/crear_rubrica', 'docente\RubricaController@crear_rubrica');
 Route::get('/crear_criterio', 'docente\RubricaController@crear_criterio');
 
-Route::get('/seleccionar', function () {
-    return view('docente.grupos');
-});

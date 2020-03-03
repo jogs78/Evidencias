@@ -27,7 +27,6 @@ Seleccione el grupo con el que trabajará<br>
         <td><a href="/diario">s8a</a></td>
         <td>
           <button class="btn btn-primary">Editar</button>
-          <button class="btn btn-secondary">Activar</button>
           <a href="/agregar_estudiante" class="btn btn-info">Matricular</a>
           <button class="btn btn-danger">Eliminar</button>
         </td>
@@ -37,7 +36,6 @@ Seleccione el grupo con el que trabajará<br>
         <td><a href="/diario">s8b</a></td>
         <td>
           <button class="btn btn-primary">Editar</button>
-          <button class="btn btn-secondary">Activar</button>
           <a href="/agregar_estudiante" class="btn btn-info">Matricular</a>
           <button class="btn btn-danger">Eliminar</button>
         </td>
