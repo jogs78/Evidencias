@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class escon extends Controller
 {
-    function listar($control) {
+    function listar($control=1) {
         switch ($control) {
             case 1:
                 $nombre = "Hugo";

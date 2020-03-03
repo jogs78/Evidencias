@@ -17,10 +17,14 @@ Route::get('/', function () {
     return view('inicio');
 });
 
+Route::post('/entrada/{cantidad?}', 'EntradaController@validar' );
+
+
+
 Route::get('/docente', function () {
     return view('docente.docente');
 });
 
-Route::get('/estudiante/{control}', 'escon@listar');
+Route::get('/estudiante/{control?}', 'escon@listar');
 Route::get('/dejar', 'EvidenciaController@dejar');
 Route::get('/calificar', 'EvidenciaController@calificar');

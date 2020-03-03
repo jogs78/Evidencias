@@ -14,6 +14,14 @@
 </head>
 <body>
     SISTEMA DE EVIDENCIAS
+    <form action="/entrada/4" method="post">
+        @csrf
+        Nombre:  <input type="text" name="nombree" id=""><br>
+        password:<input type="text" name="passwde" id=""><br>
+    <input type="submit" value="Enviar">
+    </form>
+
+
     <hr>
     <a class="btn btn-primary" href="/docente">ENTRAR COMO DOCENTE</a>
     <a class="btn btn-secondary" href="/estudiante">ENTRAR COMO ESTUDIANTE</a>
