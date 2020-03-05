@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class estcont extends Controller
 {
-    function index($id){
+    function index($id=1){
         //de id pasar a nombre
         if($id == 1 ) $Nombre = "Hugo";
         if($id == 2 ) $Nombre = "Paco";

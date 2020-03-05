@@ -10,10 +10,12 @@
     <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-hola
-  
-<a class="btn btn-success" href="/docente">quiero entrar al sistema como docente</a>
-<br>
-<a class="btn btn-danger" href="/estudiante">quiero entrar al sistema como estudiante</a>
+
+    <form action="/validar" method="post">
+        @csrf
+        nombre:        <input type="text" name="nombre" id=""><br>
+        contraseña     <input type="text" name="contra" id=""><br>
+        <input type="submit" value="Entrar">
+    </form>
 </body>
 </html>

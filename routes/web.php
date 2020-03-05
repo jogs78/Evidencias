@@ -14,9 +14,13 @@
 Route::get('/', function () {
     return view('inicio');
 });
+
+Route::post('/validar', 'EntradaController@validar');
+
+
 Route::get('/docente', function () {
     return view('docente.docente');
 });
-Route::get('/estudiante/{id}', 'Otros\estcont@index');
+Route::get('/estudiante/{id?}', 'Otros\estcont@index');
 Route::get('/dejar', 'EvidenciaController@dejar');
 Route::get('/calificar','EvidenciaController@calificar');
