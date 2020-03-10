@@ -30,7 +30,7 @@
             <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
         <hr>
-        <a class="btn btn-primary" href="/docente">ENTRAR COMO DOCENTE</a>
+        <a class="btn btn-primary" href="/seleccionar">ENTRAR COMO DOCENTE</a>
         <a class="btn btn-secondary" href="/estudiante">ENTRAR COMO ESTUDIANTE</a>
 
     </div>
