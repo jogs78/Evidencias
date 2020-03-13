@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-
+Route::post('/validar','EntradaController@validar');
 
 Route::get('/estudiante', 'estudiante\EstudianteController@index');
 Route::get('/entrega', 'estudiante\EstudianteController@entrega');

@@ -13,10 +13,11 @@
 <body>
     SISTEMA DE EVIDENCIAS
     <div class="container">
-        <form>
+        <form action="/validar" method="post"> 
+            @csrf
             <div class="form-group">
                 <label for="inputUsuario">Usuario</label>
-                <input type="text" class="form-control" id="inputUsuario" aria-describedby="emailHelp" placeholder="Nombre:">
+                <input type="text" class="form-control" id="inputUsuario" name="nombre" aria-describedby="emailHelp" placeholder="Nombre:">
                 <small id="emailHelp" class="form-text text-muted">Escriba el nombre de usuario.</small>
             </div>
             <div class="form-group">
@@ -29,11 +30,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
-        <hr>
-        <a class="btn btn-primary" href="/seleccionar">ENTRAR COMO DOCENTE</a>
-        <a class="btn btn-secondary" href="/estudiante">ENTRAR COMO ESTUDIANTE</a>
-
     </div>
 </body>
-
 </html>
