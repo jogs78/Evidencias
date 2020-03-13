@@ -1,0 +1,4 @@
+{
+    "blade.format.enable": true,
+    "phpstormFormatter.ideBinPath": "/Applications/PhpStorm.app/Contents/bin/"
+}
