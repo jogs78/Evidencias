@@ -1,47 +1,47 @@
 @extends('plantillas.plantilla_docente')
 @section('content')
-Seleccione el grupo con el que trabajará<br>
+
+
 <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Periodo</th>
-        <th>Grupo</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="text-muted">
-        <td>Agosto - Diciembre 2193</td>
-        <td><a href="/lista">s8a</a></td>
-        <td>
-        </td>
-      </tr>
-      <tr class="text-muted">
-        <td>Agosto - Diciembre 2193</td>
-        <td><a href="/lista">s8b</a></td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>Enero - Junio de 2020</td>
-        <td><a href="/diario">s8a</a></td>
-        <td>
-          <button class="btn btn-primary">Editar</button>
-          <a href="/agregar_estudiante" class="btn btn-info">Matricular</a>
-          <button class="btn btn-danger">Eliminar</button>
-        </td>
-      </tr>
-      <tr>
-        <td>Enero - Junio de 2020</td>
-        <td><a href="/diario">s8b</a></td>
-        <td>
-          <button class="btn btn-primary">Editar</button>
-          <a href="/agregar_estudiante" class="btn btn-info">Matricular</a>
-          <button class="btn btn-danger">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <a href="agregar_curso" class="btn btn-success">AGREGAR</a>
+  <thead>
+    <tr>
+      <th>Periodo</th>
+      <th>Materia</th>
+      <th>Grupo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  @forelse ($cursos as $curso)
+    <tr @if ($curso->historico())
+      class="text-muted"
+    @endif  >
+      <td>{{$curso->_periodo()}}</td>
+      <td>{{$curso->nombre}}</td>
+      <td><a href="/lista">{{$curso->grupo}}</a></td>
+      <td>
+        @if (!$curso->historico())
+        <a href="/curso/{{$curso->id}}/edit" class="btn btn-primary">Editar</a>
+        <a href="/matricular/{{$curso->id}}" class="btn btn-info">Matricular</a>
+        <form action="/curso/{{$curso->id}}" method="post">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+        @endif
+      </td>
+    </tr>
+  @empty
+  <tr>
+    <td colspan="3">SIN CRUSOS</td>
+  </tr>
+  @endforelse
+
+  @foreach ($cursos as $curso)
+  @endforeach
+  </tbody>
+</table>
+<a href="curso/create" class="btn btn-success">AGREGAR</a>
 
 @endsection
