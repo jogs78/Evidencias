@@ -11,7 +11,6 @@ class EstudianteController extends Controller
         return view('docente.estudiantes.historico');
     }    
     function lista() {
-        return view('docente.estudiantes.lista');
     }
     function diario() {
         return view('docente.estudiantes.diario');
