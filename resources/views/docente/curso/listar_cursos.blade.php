@@ -1,7 +1,6 @@
 @extends('plantillas.plantilla_docente')
 @section('content')
 
-
 <table class="table table-hover">
   <thead>
     <tr>
@@ -12,7 +11,6 @@
     </tr>
   </thead>
   <tbody>
-
   @forelse ($cursos as $curso)
     <tr @if ($curso->historico())
       class="text-muted"

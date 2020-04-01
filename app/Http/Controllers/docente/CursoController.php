@@ -9,7 +9,7 @@ use App\Curso;
 class CursoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra el listado de los recursos.
      *
      * @return \Illuminate\Http\Response
      */
@@ -20,7 +20,7 @@ class CursoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear el nuevo recurso.
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,7 +29,7 @@ class CursoController extends Controller
         return view('docente.curso.agregar');    }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda los datos del nuevo recurso a crear.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -48,7 +48,7 @@ class CursoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra el recurso espedificado.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -56,12 +56,10 @@ class CursoController extends Controller
     public function show($id)
     {
         $curso =  Curso::find($id);
-        echo $curso->toString();
-
+        echo $curso->toJson();
     }
-
     /**
-     * Show the form for editing the specified resource.
+     * Muestra para editar el recurso espedificado.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -70,11 +68,10 @@ class CursoController extends Controller
     {
         $curso =  Curso::find($id);
         return view('docente.curso.editar', compact("curso"));
-
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza los valores de la base de datos.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -86,11 +83,10 @@ class CursoController extends Controller
         $curso->fill($request->all());
         $curso->save();
         return redirect('/curso');
-
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina de la base de datos el recurso especificado.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

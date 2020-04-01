@@ -1,6 +1,8 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 class Curso extends Model
 {
     /*En este caso no tenemos problema la tabla en la base de datos se llama cursos pero si se llamase
@@ -27,4 +29,28 @@ class Curso extends Model
         else $Periodo = "Agosto - Diciembre de $agno";
         return $Periodo;
     }
+    //en la calse curso
+    public function estudiantes()
+    {
+        return $this->belongsToMany('App\Estudiante');
+        /* por convencion buscara: en la tabla curso_estudiante que contenga los campos
+        curso_id y estudiante_id ejecutando la siguiente consulta
+        
+        select `estudiantes`.*, `curso_estudiante`.`curso_id` as `pivot_curso_id`, `curso_estudiante`.`estudiante_id` as `pivot_estudiante_id` 
+        from `estudiantes` inner join `curso_estudiante` on `estudiantes`.`id` = `curso_estudiante`.`estudiante_id` 
+        where `curso_estudiante`.`curso_id` = 2
+        
+        pero existen otras formas de usar la funcion cuando tus tablas no cumplen las convenciones (nombres de tablas y nombres de campos)
+        */
+    }
+
+    public function docente(){
+        return $this->belongsTo('App\Docente');
+        /*
+        si uso return $this->hasOne('App\Docente'); daría un error: que esperaria que la tabla docente tenga el campo 'docentes.curso_id' 
+        y en sus convenciones busca: select * from `docentes` where `docentes`.`curso_id` = 2 and `docentes`.`curso_id` is not null limit 1
+        pero pero la relacion es un docente tiene un curso 
+        */
+    }
+
 }
