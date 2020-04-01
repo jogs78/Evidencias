@@ -13,21 +13,21 @@ class EstudianteSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('docentes')->insert([
+        DB::table('estudiantes')->insert([
             'control' => '11270000',
             'nombre' => '11 Estudiante',
             'apellidos' => ' del 11',
         ]);
         
-        DB::table('docentes')->insert([
+        DB::table('estudiantes')->insert([
             'control' => '12270000',
             'nombre' => '12 Estudiante',
             'apellidos' => ' del 12',
         ]);
         
-        DB::table('docentes')->insert([
+        DB::table('estudiantes')->insert([
             'control' => '13270000',
-            'nombre' => '13:_gbn h Estudiante',
+            'nombre' => '13 Estudiante',
             'apellidos' => ' del 12',
         ]);
         
