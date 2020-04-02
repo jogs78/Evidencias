@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('inicio');
+    return view('welcome');
 });
 
 Route::resource('curso', 'docente\CursoController');
@@ -41,3 +41,7 @@ Route::get('/matricular','docente\EstudianteController@matricular');
 Route::get('/listar_rubricas', 'docente\RubricaController@listar_rubricas');
 Route::get('/crear_rubrica', 'docente\RubricaController@crear_rubrica');
 Route::get('/crear_criterio', 'docente\RubricaController@crear_criterio');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
