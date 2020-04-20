@@ -4,10 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Docente extends Model
+class Docente extends User
 {
-    protected $fillable = [
-        'nombre'
-    ];
-    public $timestamps =false;
- }
+}

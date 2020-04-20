@@ -4,10 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Estudiante extends Model
+class Estudiante extends User
 {
-    protected $fillable = [
-        'control', 'nombre', 'apellidos'
-     ];
-     public $timestamps =false;
- }
+}

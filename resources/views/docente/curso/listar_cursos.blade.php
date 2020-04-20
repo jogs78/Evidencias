@@ -17,16 +17,18 @@
     @endif  >
       <td>{{$curso->_periodo()}}</td>
       <td>{{$curso->nombre}}</td>
-      <td><a href="/lista">{{$curso->grupo}}</a></td>
+      <td><a href="/lista/{{$curso->id}}">{{$curso->grupo}}</a></td>
       <td>
         @if (!$curso->historico())
         <a href="/curso/{{$curso->id}}/edit" class="btn btn-primary">Editar</a>
         <a href="/matricular/{{$curso->id}}" class="btn btn-info">Matricular</a>
-        <form action="/curso/{{$curso->id}}" method="post">
-          @csrf
-          @method('DELETE')
-          <button type="submit" class="btn btn-danger">Eliminar</button>
-        </form>
+          @can('eliminar', $curso)
+          <form action="/curso/{{$curso->id}}" method="post">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+          </form>              
+          @endcan
         @endif
       </td>
     </tr>

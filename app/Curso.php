@@ -12,7 +12,7 @@ class Curso extends Model
     /* estos son los campos de la tabla que se veran afectados cuando usemos el metodo fill, como el 
     id es autoincremental no se necesita aqui*/
     protected $fillable = [
-       'periodo', 'grupo', 'nombre', 'fecha_inicio', 'fecha_fin', 'descripcion', 'unidades', 'activo'
+        'periodo', 'grupo', 'nombre', 'fecha_inicio', 'fecha_fin', 'descripcion', 'unidades', 'activo', 'docente_id'
     ];
     /* en este caso le decimos que no queremos usar los campos created_at ni updated_at */
     public $timestamps =false;
@@ -32,7 +32,7 @@ class Curso extends Model
     //en la calse curso
     public function estudiantes()
     {
-        return $this->belongsToMany('App\Estudiante');
+        //return $this->belongsToMany('App\Estudiante');
         /* por convencion buscara: en la tabla curso_estudiante que contenga los campos
         curso_id y estudiante_id ejecutando la siguiente consulta
         
@@ -42,15 +42,18 @@ class Curso extends Model
         
         pero existen otras formas de usar la funcion cuando tus tablas no cumplen las convenciones (nombres de tablas y nombres de campos)
         */
+        return $this->belongsToMany('App\User','curso_estudiante','curso_id', 'estudiante_id');
+
     }
 
     public function docente(){
-        return $this->belongsTo('App\Docente');
+        //return $this->belongsTo('App\Docente');
         /*
         si uso return $this->hasOne('App\Docente'); daría un error: que esperaria que la tabla docente tenga el campo 'docentes.curso_id' 
         y en sus convenciones busca: select * from `docentes` where `docentes`.`curso_id` = 2 and `docentes`.`curso_id` is not null limit 1
         pero pero la relacion es un docente tiene un curso 
         */
+        return $this->belongsTo('App\User');
     }
 
 }

@@ -10,17 +10,15 @@
     </thead>
     <tbody>
         @forelse ($curso->estudiantes as $estudiante)
-        
+        <tr>
+            <td></td>
+            <td><a href="/historico/{{$estudiante->id}}">{{$estudiante->name}}</a></td>
+        </tr>
         @empty
             <tr>
                 <td colspan="2" >Sin estudiantes matriculados</td>
             </tr>
         @endforelse
-    
-        <tr>
-            <td>16270158</td>
-            <td><a href="/historico">ALBORES JIMENEZ JORGE ALBERTO</a></td>
-        </tr>
      </tbody>
 </table>
 @endsection

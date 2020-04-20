@@ -16,7 +16,6 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Show the application dashboard.
      *
@@ -25,13 +24,10 @@ class HomeController extends Controller
     public function index()
     {
         $logeado = Auth::user();
-//        return view('home');
         if($logeado->rol == "docente")
         return redirect("/seleccionar");
 
         if($logeado->rol == "estudiante")
         return redirect("/estudiante");
-
-//        return view('home');
     }
 }

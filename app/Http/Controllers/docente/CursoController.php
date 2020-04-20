@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\docente;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Curso;
 
@@ -15,7 +16,7 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::all();
+        $cursos = Curso::all()->where('docente_id','=',Auth::user()->id);
         return view('docente.curso.listar_cursos', compact('cursos'));
     }
 
@@ -43,6 +44,7 @@ class CursoController extends Controller
         */
         $curso = new Curso;
         $curso->fill($request->all());
+        $curso->docente_id = Auth::user()->id;
         $curso->save();
         return redirect('/curso');
     }
@@ -67,6 +69,7 @@ class CursoController extends Controller
     public function edit($id)
     {
         $curso =  Curso::find($id);
+        $this->authorize('edit', $curso);
         return view('docente.curso.editar', compact("curso"));
     }
 
