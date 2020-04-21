@@ -141,9 +141,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `rol`, `created_at`, `updated_at`) VALUES
 (1, 'Jorge Octavio Guzmán Sánchez', 'jguzman@ittg.edu.mx', NULL, '$2y$10$78COsUCTvDYb6bf0WcO33eXnk3367zKzkCw78V7/9MEtzEsoN0Yq6', NULL, 'docente', NULL, NULL),
 (2, 'Sergio Guzmán Sánchez', 'sguzman@ittg.edu.mx', NULL, '$2y$10$fhpqIIsw2fq8WDlDqU/k2egL63hfbfxeb9TH46592ZGHAAsoeWgN2', NULL, 'docente', NULL, NULL),
-(3, 'Estudainte 1 Guzmán Sánchez', 'e1guzman@ittg.edu.mx', NULL, '$2y$10$/VXb3bbzNwhFy4KgCYZjt.4hkuBd26zk8c.Qm9ldozwsmwsJRhuC.', NULL, 'estudiante', NULL, NULL),
-(4, 'Estudainte 2 Guzmán Sánchez', 'e2guzman@ittg.edu.mx', NULL, '$2y$10$yEGr0YolKO5a7.usSTPdeOfxVLrTe6ZmxZMSlWHdd/ZzADlVHYzgC', NULL, 'estudiante', NULL, NULL),
-(5, 'Estudainte 3 Guzmán Sánchez', 'e3guzman@ittg.edu.mx', NULL, '$2y$10$dakJCfguUTNwn8k6M4hlzOMQyCu9hT5WAEnNQg8dJnxd1MjTZHF3a', NULL, 'estudiante', NULL, NULL);
+(3, 'Estudiante 1 Guzmán Sánchez', 'e1guzman@ittg.edu.mx', NULL, '$2y$10$/VXb3bbzNwhFy4KgCYZjt.4hkuBd26zk8c.Qm9ldozwsmwsJRhuC.', NULL, 'estudiante', NULL, NULL),
+(4, 'Estudiante 2 Guzmán Sánchez', 'e2guzman@ittg.edu.mx', NULL, '$2y$10$yEGr0YolKO5a7.usSTPdeOfxVLrTe6ZmxZMSlWHdd/ZzADlVHYzgC', NULL, 'estudiante', NULL, NULL),
+(5, 'Estudiante 3 Guzmán Sánchez', 'e3guzman@ittg.edu.mx', NULL, '$2y$10$dakJCfguUTNwn8k6M4hlzOMQyCu9hT5WAEnNQg8dJnxd1MjTZHF3a', NULL, 'estudiante', NULL, NULL);
 
 --
 -- Índices para tablas volcadas
