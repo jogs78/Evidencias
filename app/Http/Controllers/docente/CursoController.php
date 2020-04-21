@@ -10,6 +10,16 @@ use App\Curso;
 class CursoController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth'); //sin este middleware fallaria cuando no existe sesion
+    }
+
+    /**
      * Muestra el listado de los recursos.
      *
      * @return \Illuminate\Http\Response
