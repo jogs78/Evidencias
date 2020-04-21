@@ -20,6 +20,7 @@ Route::get('/seleccionar',     'docente\CursoController@seleccionar');
 Route::get('/agregar_unidad',     'docente\CursoController@agregar_unidad');
 Route::get('/matricular/{curso}','docente\CursoController@matricular');
 Route::get('/lista/{curso}',    'docente\CursoController@lista');
+Route::get('/activar/{curso}',    'docente\CursoController@activar');
 
 
 Route::post('/validar','EntradaController@validar');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\docente;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 use App\Curso;
 
@@ -130,10 +132,32 @@ class CursoController extends Controller
 
     }
     function seleccionar() {
-        return view('docente.curso.seleccionar');
+        $hoy = date("Y-m-d");
+        $cursos  = Curso::
+        where("fecha_inicio","<=",$hoy)
+        ->where("fecha_fin",">=",$hoy)
+        ->where('docente_id','=',Auth::user()->id)
+        ->get();
+        return view('docente.curso.seleccionar',compact("cursos"));
     }
     function agregar_unidad() {
         return view('docente.unidad.agregar_unidad');
+    }
+
+    function activar($id){
+        try {
+            DB::beginTransaction();
+            Curso::where('activo', 1)->update(['activo' => 0]);
+            $curso =  Curso::find($id);
+            $curso->activo = 1;
+            $curso->save();
+            DB::commit();
+            return redirect("/seleccionar")->with("success","Grupo $curso->grupo activado");
+        } catch (\Exception $e) {
+            $error = $e->getMessage();
+            DB::rollback();
+            return redirect("/seleccionar")->with("error","No se pudo activar el grupo por: $error");
+        }
     }
 
 
