@@ -49,9 +49,6 @@
     <td colspan="3">SIN CRUSOS</td>
   </tr>
   @endforelse
-
-  @foreach ($cursos as $curso)
-  @endforeach
   </tbody>
 </table>
 <a href="curso/create" class="btn btn-success">AGREGAR</a>
