@@ -39,9 +39,11 @@ Route::get('/agrupar',  'docente\EstudianteController@agrupar');
 Route::get('/historico','docente\EstudianteController@historico');
 Route::get('/matricular','docente\EstudianteController@matricular');
 
-Route::get('/listar_rubricas', 'docente\RubricaController@listar_rubricas');
-Route::get('/crear_rubrica', 'docente\RubricaController@crear_rubrica');
+Route::resource('rubrica', 'docente\RubricaController');
+
+
 Route::get('/crear_criterio', 'docente\RubricaController@crear_criterio');
+
 
 Auth::routes();
 

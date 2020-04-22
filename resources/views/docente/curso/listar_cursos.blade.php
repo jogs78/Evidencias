@@ -1,5 +1,17 @@
 @extends('plantillas.plantilla_docente')
 @section('content')
+@if (\Session::has('success'))
+<div class="alert alert-success">
+  <p>{{ \Session::get('success') }}</p>
+</div><br />
+@endif
+
+@if (\Session::has('error'))
+<div class="alert alert-danger">
+  <p>{{ \Session::get('error') }}</p>
+</div><br />
+@endif
+
 
 <table class="table table-hover">
   <thead>
@@ -20,10 +32,10 @@
       <td><a href="/lista/{{$curso->id}}">{{$curso->grupo}}</a></td>
       <td>
         @if (!$curso->historico())
-        <a href="/curso/{{$curso->id}}/edit" class="btn btn-primary">Editar</a>
-        <a href="/matricular/{{$curso->id}}" class="btn btn-info">Matricular</a>
+        <a href="/curso/{{$curso->id}}/edit" class="btn btn-primary"  style="display: inline">Editar</a>
+        <a href="/matricular/{{$curso->id}}" class="btn btn-info"  style="display: inline">Matricular</a>
           @can('eliminar', $curso)
-          <form action="/curso/{{$curso->id}}" method="post">
+          <form action="/curso/{{$curso->id}}" method="post"  style="display: inline">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Eliminar</button>

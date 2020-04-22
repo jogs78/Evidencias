@@ -17,7 +17,7 @@
                   <a class="nav-link"   href="/listar_evidencias">Evidencias</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"   href="/listar_rubricas">Rubricas</a>
+                  <a class="nav-link"   href="/rubrica">Rubricas</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link"   href="/curso">Curso</a>

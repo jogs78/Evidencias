@@ -18,7 +18,8 @@ class CursoController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth'); //sin este middleware fallaria cuando no existe sesion
+        $this->middleware('auth'); //sin este middleware el controlador se ejecutaria
+        // aún cuando no existe sesion (si no ahy alguien activo)
     }
 
     /**
@@ -39,7 +40,8 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return view('docente.curso.agregar');    }
+        return view('docente.curso.agregar');
+    }
 
     /**
      * Guarda los datos del nuevo recurso a crear.
@@ -58,7 +60,7 @@ class CursoController extends Controller
         $curso->fill($request->all());
         $curso->docente_id = Auth::user()->id;
         $curso->save();
-        return redirect('/curso');
+        return redirect('/curso')->with('success','El curso ha sido creado');;
     }
 
     /**
@@ -97,7 +99,7 @@ class CursoController extends Controller
         $curso =  Curso::find($id);
         $curso->fill($request->all());
         $curso->save();
-        return redirect('/curso');
+        return redirect('/curso')->with('success','El curso ha sido actualizado');;
     }
 
     /**
@@ -158,7 +160,7 @@ class CursoController extends Controller
             DB::rollback();
             return redirect("/seleccionar")->with("error","No se pudo activar el grupo por: $error");
         }
-    }
+    } 
 
 
 }
