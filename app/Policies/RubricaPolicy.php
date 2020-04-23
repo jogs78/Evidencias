@@ -26,4 +26,10 @@ class RubricaPolicy
         return $authUser->id == $rubrica->autor;
     }
 
+    public function eliminar(User $authUser, Rubrica $rubrica){
+        $le_pertenece = $authUser->id == $rubrica->autor;
+        $esta_vacia = $rubrica->aspectos->count() == 0;
+        return $le_pertenece  && $esta_vacia;
+    }
+
 }

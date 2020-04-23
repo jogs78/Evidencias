@@ -37,7 +37,7 @@
             @endforelse
             </tbody>
         </table>
-        <a href="/crear_criterio" class="btn btn-success">AGREGAR CRITERIO</a>
+        <a href="/aspecto/create" class="btn btn-success">Agregar criterio</a>
         <ol>
             <li>Referencias - 5%</li>
             <li>Identificación - 2.5%</li>
@@ -45,10 +45,9 @@
             <li>Aprendizaje - 22.5</li>
             <li>Saberes - 37.5</li>
         </ol>
-        <a href="/crear_criterio" class="btn btn-success">Agregar criterio</a>
     </div>
 </div>
-<input class="btn btn-primary"  type="submit" value="Crear">
+<input class="btn btn-primary"  type="submit" value="Actualizar">
 </form>
 
 @endsection

@@ -123,6 +123,10 @@ class CursoController extends Controller
                 return redirect('/curso')->with('error', $e->getMessage());;
         }
     }
+
+
+
+
     function matricular($id){
         $curso =  Curso::find($id);
         return view('docente.curso.matricular',compact("curso"));

@@ -20,9 +20,6 @@
 @endif
 
 
-
-<h5 class="card-title">Lista de rubicas para el grupo: "___ del periodo _____"</h5><br>
-
 <table class="table table-hover">
     <thead>
       <tr>
@@ -34,11 +31,16 @@
     @forelse ($rubricas as $rubrica)
         <tr>
             <td><a href="/rubrica/{{$rubrica->id}}/edit" >{{$rubrica->tipo_de}}</a></td>
-            <td><form action="/rubrica/{{$rubrica->id}}" method="post" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Eliminar</button>
-              </form></td>
+            <td>
+                @can('eliminar', $rubrica)
+                <form action="/rubrica/{{$rubrica->id}}" method="post" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+                @endcan
+
+            </td>
         </tr>
     @empty
     <tr>

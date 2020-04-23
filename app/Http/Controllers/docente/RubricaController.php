@@ -86,12 +86,43 @@ class RubricaController extends Controller
         return view('docente.rubricas.editar_rubrica', compact("rubrica"));
     }
 
-
-
-
-    function crear_criterio() {
-        return view('docente.rubricas.crear_criterio');
+    /**
+     * Actualiza los valores de la base de datos.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $rubrica =  Rubrica::find($id);
+        $rubrica->fill($request->all());
+        $rubrica->save();
+        return redirect('/rubrica')->with('success','La rubrica ha sido actualizada');;
     }
+
+    /**
+     * Elimina de la base de datos el recurso especificado.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            $rubrica= Rubrica::find($id);  
+            if ($rubrica != null){
+                $rubrica->delete();
+                return redirect('/rubrica')->with('success','La rubrica ha sido borrada');
+            }else{
+                return redirect('/rubrica')->with('error','La rubrica no ha sido encontrada');
+            }
+        }catch (\Illuminate\Database\QueryException $e){
+            if($e->getCode()==23000) 
+                return redirect('/rubrica')->with('error', $e->getMessage());;
+        }
+    }
+
     
     
 

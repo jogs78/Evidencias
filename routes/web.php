@@ -40,10 +40,9 @@ Route::get('/historico','docente\EstudianteController@historico');
 Route::get('/matricular','docente\EstudianteController@matricular');
 
 Route::resource('rubrica', 'docente\RubricaController');
-
-
-Route::get('/crear_criterio', 'docente\RubricaController@crear_criterio');
-
+Route::resource('aspecto', 'docente\AspectoController')->except([
+    'index'
+]);;
 
 Auth::routes();
 
