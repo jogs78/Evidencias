@@ -1,6 +1,25 @@
 @extends('plantillas.plantilla_docente')
 @section('content')
     
+@if (\Session::has('success'))
+<div class="alert alert-success alert-dismissible">
+  {{ \Session::get('success') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div><br />
+@endif
+
+@if (\Session::has('error'))
+<div class="alert alert-danger alert-dismissible">
+  {{ \Session::get('error') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div><br />
+@endif
+
+
 <form action="/rubrica/{{$rubrica->id}}" method="post">
     @method('PUT')
     @csrf
@@ -28,7 +47,19 @@
                 <tr>
                     <td>{{$aspecto->criterio}}</td>
                     <td>{{$aspecto->ponderacion}}</td>
-                    <td></td>
+                    <td>
+                            @can('edit',  $aspecto)
+                                <a href="/aspecto/{{$aspecto->id}}/edit" class="btn btn-primary"  style="display: inline">Editar</a>                            
+                            @endcan
+                            @can('eliminar', $aspecto)
+                            <form action="/aspecto/{{$aspecto->id}}" method="post" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                            @endcan
+            
+                    </td>
                 </tr>
             @empty
             <tr>
@@ -37,14 +68,7 @@
             @endforelse
             </tbody>
         </table>
-        <a href="/aspecto/create" class="btn btn-success">Agregar criterio</a>
-        <ol>
-            <li>Referencias - 5%</li>
-            <li>Identificación - 2.5%</li>
-            <li>Temporalidad - 2.5%</li>
-            <li>Aprendizaje - 22.5</li>
-            <li>Saberes - 37.5</li>
-        </ol>
+        <a href="/aspecto/create/{{$rubrica->id}}" class="btn btn-success">Agregar criterio</a>
     </div>
 </div>
 <input class="btn btn-primary"  type="submit" value="Actualizar">

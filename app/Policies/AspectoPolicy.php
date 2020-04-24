@@ -4,6 +4,9 @@ namespace App\Policies;
 //php artisan make:policy AspectoPolicy
 
 use App\User;
+use App\Rubrica;
+use App\Aspecto;
+
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AspectoPolicy
@@ -19,4 +22,13 @@ class AspectoPolicy
     {
         //
     }
+    public function edit(User $authUser, Aspecto $aspecto)
+    {
+        return $authUser->id == $aspecto->rubrica->autor;
+    }
+
+    public function eliminar(User $authUser, Aspecto $aspecto){
+        return $authUser->id == $aspecto->rubrica->autor;
+    }
+
 }

@@ -41,8 +41,9 @@ Route::get('/matricular','docente\EstudianteController@matricular');
 
 Route::resource('rubrica', 'docente\RubricaController');
 Route::resource('aspecto', 'docente\AspectoController')->except([
-    'index'
+    'index','create'
 ]);;
+Route::get('/aspecto/create/{rid}',  'docente\AspectoController@create');
 
 Auth::routes();
 

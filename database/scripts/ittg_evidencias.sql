@@ -1,7 +1,11 @@
 -- phpMyAdmin SQL Dump
 -- version 4.7.7
 -- https://www.phpmyadmin.net/
+--
 -- Servidor: localhost
+-- Tiempo de generación: 24-04-2020 a las 05:39:33
+-- Versión del servidor: 5.7.27-0ubuntu0.18.04.1
+-- Versión de PHP: 7.1.31-1+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -17,6 +21,32 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ittg_evidencias`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aspectos`
+--
+
+CREATE TABLE `aspectos` (
+  `id` int(11) NOT NULL,
+  `rubrica_id` int(11) NOT NULL,
+  `criterio` varchar(45) DEFAULT NULL,
+  `ponderacion` float DEFAULT NULL,
+  `aceptacion_optima` varchar(200) DEFAULT NULL,
+  `aceptacion_media` varchar(200) DEFAULT NULL,
+  `aceptacion_nula` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `aspectos`
+--
+
+INSERT INTO `aspectos` (`id`, `rubrica_id`, `criterio`, `ponderacion`, `aceptacion_optima`, `aceptacion_media`, `aceptacion_nula`) VALUES
+(2, 1, 'Identificación', 2.5, 'Se identifica completamente', 'a medias', 'No se identifica completamente'),
+(3, 1, 'Temporalidad', 2.5, 'Se identifica completamente', 'a medias', 'No se identifica completamente'),
+(4, 1, 'Aprendizaje', 22.5, 'optimo', 'medio', 'nulo'),
+(6, 1, 'Saberes', 37.5, '1', '2', '3');
 
 -- --------------------------------------------------------
 
@@ -42,9 +72,10 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`id`, `periodo`, `grupo`, `nombre`, `fecha_inicio`, `fecha_fin`, `descripcion`, `unidades`, `activo`, `docente_id`) VALUES
-(1, NULL, 's8a', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 0, 1),
+(1, NULL, 's8a', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 1, 1),
 (2, NULL, 's8a', 'Matemáticas', '2020-03-23', '2020-06-01', 'Matemáticas', 4, 0, 2),
-(3, NULL, 's8b', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 0, 1);
+(3, NULL, 's8b', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 0, 1),
+(4, NULL, 's9a', 'Programación con frameworks 19', '2019-08-05', '2019-12-20', 'Usar Laravel', 4, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -119,6 +150,28 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `rubricas`
+--
+
+CREATE TABLE `rubricas` (
+  `id` int(11) NOT NULL,
+  `tipo_de` varchar(45) DEFAULT NULL,
+  `autor` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rubricas`
+--
+
+INSERT INTO `rubricas` (`id`, `tipo_de`, `autor`) VALUES
+(1, 'Rubrica de investigación.', 1),
+(2, 'Rubrica de desarrollo.', 1),
+(3, 'Rubrica de entrevista', 1),
+(4, 'Rubrica de Prototipo', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -141,13 +194,20 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `rol`, `created_at`, `updated_at`) VALUES
 (1, 'Jorge Octavio Guzmán Sánchez', 'jguzman@ittg.edu.mx', NULL, '$2y$10$78COsUCTvDYb6bf0WcO33eXnk3367zKzkCw78V7/9MEtzEsoN0Yq6', NULL, 'docente', NULL, NULL),
 (2, 'Sergio Guzmán Sánchez', 'sguzman@ittg.edu.mx', NULL, '$2y$10$fhpqIIsw2fq8WDlDqU/k2egL63hfbfxeb9TH46592ZGHAAsoeWgN2', NULL, 'docente', NULL, NULL),
-(3, 'Estudiante 1 Guzmán Sánchez', 'e1guzman@ittg.edu.mx', NULL, '$2y$10$/VXb3bbzNwhFy4KgCYZjt.4hkuBd26zk8c.Qm9ldozwsmwsJRhuC.', NULL, 'estudiante', NULL, NULL),
-(4, 'Estudiante 2 Guzmán Sánchez', 'e2guzman@ittg.edu.mx', NULL, '$2y$10$yEGr0YolKO5a7.usSTPdeOfxVLrTe6ZmxZMSlWHdd/ZzADlVHYzgC', NULL, 'estudiante', NULL, NULL),
-(5, 'Estudiante 3 Guzmán Sánchez', 'e3guzman@ittg.edu.mx', NULL, '$2y$10$dakJCfguUTNwn8k6M4hlzOMQyCu9hT5WAEnNQg8dJnxd1MjTZHF3a', NULL, 'estudiante', NULL, NULL);
+(3, 'Estudainte 1 Guzmán Sánchez', 'e1guzman@ittg.edu.mx', NULL, '$2y$10$/VXb3bbzNwhFy4KgCYZjt.4hkuBd26zk8c.Qm9ldozwsmwsJRhuC.', NULL, 'estudiante', NULL, NULL),
+(4, 'Estudainte 2 Guzmán Sánchez', 'e2guzman@ittg.edu.mx', NULL, '$2y$10$yEGr0YolKO5a7.usSTPdeOfxVLrTe6ZmxZMSlWHdd/ZzADlVHYzgC', NULL, 'estudiante', NULL, NULL),
+(5, 'Estudainte 3 Guzmán Sánchez', 'e3guzman@ittg.edu.mx', NULL, '$2y$10$dakJCfguUTNwn8k6M4hlzOMQyCu9hT5WAEnNQg8dJnxd1MjTZHF3a', NULL, 'estudiante', NULL, NULL);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `aspectos`
+--
+ALTER TABLE `aspectos`
+  ADD PRIMARY KEY (`id`,`rubrica_id`),
+  ADD KEY `fk_aspectos_rubricas2_idx` (`rubrica_id`);
 
 --
 -- Indices de la tabla `cursos`
@@ -183,6 +243,13 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indices de la tabla `rubricas`
+--
+ALTER TABLE `rubricas`
+  ADD PRIMARY KEY (`id`,`autor`),
+  ADD KEY `fk_rubricas_users1_idx` (`autor`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -194,10 +261,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `aspectos`
+--
+ALTER TABLE `aspectos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `curso_estudiante`
@@ -218,6 +291,12 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `rubricas`
+--
+ALTER TABLE `rubricas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
@@ -226,6 +305,12 @@ ALTER TABLE `users`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `aspectos`
+--
+ALTER TABLE `aspectos`
+  ADD CONSTRAINT `fk_aspectos_rubricas2` FOREIGN KEY (`rubrica_id`) REFERENCES `rubricas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `cursos`
@@ -239,6 +324,12 @@ ALTER TABLE `cursos`
 ALTER TABLE `curso_estudiante`
   ADD CONSTRAINT `fk_curso_estudiante_cursos1_idx` FOREIGN KEY (`curso_id`) REFERENCES `cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_curso_estudiante_users1_idx` FOREIGN KEY (`estudiante_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `rubricas`
+--
+ALTER TABLE `rubricas`
+  ADD CONSTRAINT `fk_rubricas_users1` FOREIGN KEY (`autor`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
