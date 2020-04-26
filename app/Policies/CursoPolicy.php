@@ -9,7 +9,6 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class CursoPolicy
 {
     use HandlesAuthorization;
-
     /**
      * Create a new policy instance.
      *
@@ -24,7 +23,6 @@ class CursoPolicy
     {
         return $authUser->id == $materia->docente_id;
     }
-
     public function eliminar(User $authUser, Curso $materia){
         $le_pertenece = $authUser->id == $materia->docente_id;
         $esta_vacia = $materia->estudiantes->count() == 0;

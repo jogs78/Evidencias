@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Session;
+
 use App\Curso;
 
 class CursoController extends Controller
@@ -29,6 +31,7 @@ class CursoController extends Controller
      */
     public function index()
     {
+
         $cursos = Curso::all()->where('docente_id','=',Auth::user()->id);
         return view('docente.curso.listar_cursos', compact('cursos'));
     }
@@ -51,11 +54,6 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-/*
-        $datos = $request->all();
-        var_dump($datos);
-        return;
-        */
         $curso = new Curso;
         $curso->fill($request->all());
         $curso->docente_id = Auth::user()->id;
@@ -144,7 +142,16 @@ class CursoController extends Controller
         ->where("fecha_fin",">=",$hoy)
         ->where('docente_id','=',Auth::user()->id)
         ->get();
-        return view('docente.curso.seleccionar',compact("cursos"));
+
+        $activo  = Curso::
+        where("fecha_inicio","<=",$hoy)
+        ->where("fecha_fin",">=",$hoy)
+        ->where('docente_id','=',Auth::user()->id)
+        ->where('activo', 1)
+        ->first();
+
+        \Session::put('activo' ,  $activo );
+        return view('docente.curso.seleccionar',compact("cursos","activo"));
     }
     function agregar_unidad() {
         return view('docente.unidad.agregar_unidad');
@@ -157,6 +164,7 @@ class CursoController extends Controller
             $curso =  Curso::find($id);
             $curso->activo = 1;
             $curso->save();
+            \Session::put('activo' ,  $curso );
             DB::commit();
             return redirect("/seleccionar")->with("success","Grupo $curso->grupo activado");
         } catch (\Exception $e) {

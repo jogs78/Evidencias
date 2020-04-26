@@ -12,7 +12,8 @@ class Curso extends Model
     /* estos son los campos de la tabla que se veran afectados cuando usemos el metodo fill, como el 
     id es autoincremental no se necesita aqui*/
     protected $fillable = [
-        'periodo', 'grupo', 'nombre', 'fecha_inicio', 'fecha_fin', 'descripcion', 'unidades', 'activo', 'docente_id'
+        'periodo', 'grupo', 'nombre', 'fecha_inicio', 'fecha_fin',
+        'descripcion', 'unidades', 'activo', 'docente_id'
     ];
     /* en este caso le decimos que no queremos usar los campos created_at ni updated_at */
     public $timestamps =false;

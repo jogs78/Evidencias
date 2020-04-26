@@ -51,11 +51,6 @@ class RubricaController extends Controller
      */
     public function store(Request $request)
     {
-/*
-        $datos = $request->all();
-        var_dump($datos);
-        return;
-        */
         $rubrica = new Rubrica;
         $rubrica->fill($request->all());
         $rubrica->autor = Auth::user()->id;

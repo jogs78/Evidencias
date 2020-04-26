@@ -15,7 +15,8 @@
 @endif
 
 
-Seleccione el grupo con el que trabajará<br>
+Seleccione el grupo con el que trabajará, actualmente esta seleccionado "{{$activo->nombre}} del {{$activo->grupo}}"<br>  
+<br>
 
 <table class="table table-hover">
   <thead>
