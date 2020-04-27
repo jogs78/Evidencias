@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 Route::resource('curso', 'docente\CursoController');
-
 Route::get('/seleccionar',     'docente\CursoController@seleccionar');
 Route::get('/activar/{curso}',    'docente\CursoController@activar');
 
@@ -27,20 +26,22 @@ Route::get('/aspecto/create/{rid}',  'docente\AspectoController@create')->middle
 
 Route::resource('evidencia', 'docente\EvidenciaController')->middleware('auth');
 
+Route::get('/estudiante', 'estudiante\EstudianteController@index')->middleware('auth');
+Route::get('/entrega', 'estudiante\EstudianteController@entrega');
+Route::get('/historicoe','estudiante\EstudianteController@historicoe');
+
+
+
+
+
 Route::get('/equipos_grupo',           'docente\EvidenciaController@equipos_grupo');
 Route::get('/valorar',           'docente\EvidenciaController@valorar');
-
-
-
 Route::get('/agregar_unidad',     'docente\CursoController@agregar_unidad');
 Route::get('/matricular/{curso}','docente\CursoController@matricular');
 Route::get('/lista/{curso}',    'docente\CursoController@lista');
 
 Route::post('/validar','EntradaController@validar');
 
-Route::get('/estudiante', 'estudiante\EstudianteController@index');
-Route::get('/entrega', 'estudiante\EstudianteController@entrega');
-Route::get('/historicoe','estudiante\EstudianteController@historicoe');
 
 
 Route::get('/diario',    'docente\EstudianteController@diario');
