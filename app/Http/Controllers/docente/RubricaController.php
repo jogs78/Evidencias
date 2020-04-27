@@ -31,7 +31,7 @@ class RubricaController extends Controller
     public function index()
     {
         $rubricas = Rubrica::all()->where('autor','=',Auth::user()->id);
-        return view('docente.rubricas.listar_rubricas', compact('rubricas'));
+        return view('docente.rubrica.listar', compact('rubricas'));
     }
 
     /**
@@ -41,7 +41,7 @@ class RubricaController extends Controller
      */
     public function create()
     {
-        return view('docente.rubricas.crear_rubrica');
+        return view('docente.rubrica.crear');
     }
     /**
      * Guarda los datos del nuevo recurso a crear.
@@ -78,7 +78,7 @@ class RubricaController extends Controller
     {
         $rubrica =  Rubrica::find($id);
         $this->authorize('edit', $rubrica);
-        return view('docente.rubricas.editar_rubrica', compact("rubrica"));
+        return view('docente.rubrica.editar', compact("rubrica"));
     }
 
     /**

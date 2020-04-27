@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
-use Illuminate\Session;
 
 use App\Curso;
 
@@ -21,7 +20,7 @@ class CursoController extends Controller
     public function __construct()
     {
         $this->middleware('auth'); //sin este middleware el controlador se ejecutaria
-        // aún cuando no existe sesion (si no ahy alguien activo)
+        // aún cuando no exista sesion (si no ahy alguien activo)
     }
 
     /**

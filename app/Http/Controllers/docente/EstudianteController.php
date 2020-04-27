@@ -4,7 +4,7 @@ namespace App\Http\Controllers\docente;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+//php artisan make:controller docente/EvidenciaController -r
 class EstudianteController extends Controller
 {
     function historico() {

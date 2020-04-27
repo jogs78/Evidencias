@@ -20,14 +20,12 @@ Route::resource('curso', 'docente\CursoController');
 Route::get('/seleccionar',     'docente\CursoController@seleccionar');
 Route::get('/activar/{curso}',    'docente\CursoController@activar');
 
-Route::resource('rubrica', 'docente\RubricaController');
-Route::resource('aspecto', 'docente\AspectoController')->except(['index','create']);
-Route::get('/aspecto/create/{rid}',  'docente\AspectoController@create');
+Route::resource('rubrica', 'docente\RubricaController')->middleware('auth');
+Route::resource('aspecto', 'docente\AspectoController')->middleware('auth')->except(['index','create']);
+Route::get('/aspecto/create/{rid}',  'docente\AspectoController@create')->middleware('auth');
 
 
-/* crear el resourece de evidencias*/
-Route::get('/dejar',             'docente\EvidenciaController@dejar');
-Route::get('/listar_evidencias', 'docente\EvidenciaController@listar_evidencias');
+Route::resource('evidencia', 'docente\EvidenciaController')->middleware('auth');
 
 Route::get('/equipos_grupo',           'docente\EvidenciaController@equipos_grupo');
 Route::get('/valorar',           'docente\EvidenciaController@valorar');

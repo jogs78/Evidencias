@@ -33,7 +33,7 @@ class AspectoController extends Controller
     public function create($rid)
     {
         //
-        return view('docente.aspectos.crear_aspecto',compact('rid'));
+        return view('docente.aspecto.crear',compact('rid'));
 
     }
 
@@ -73,7 +73,7 @@ class AspectoController extends Controller
     {
         $aspecto =  Aspecto::find($id);
         $this->authorize('edit', $aspecto);
-        return view('docente.aspectos.editar_aspecto', compact("aspecto"));
+        return view('docente.aspecto.editar', compact("aspecto"));
     }
 
     /**

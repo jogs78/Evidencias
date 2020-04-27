@@ -1,18 +1,33 @@
 @extends('plantillas.plantilla_docente')
 @section('content')
 
-
 @if (\Session::has('success'))
-<div class="alert alert-success">
-  <p>{{ \Session::get('success') }}</p>
+<div class="alert alert-success alert-dismissible">
+  {{ \Session::get('success') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div><br />
+@endif
+
+@if (\Session::has('warning'))
+<div class="alert alert-info alert-dismissible">
+  {{ \Session::get('warning') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div><br />
 @endif
 
 @if (\Session::has('error'))
-<div class="alert alert-danger">
-  <p>{{ \Session::get('error') }}</p>
+<div class="alert alert-danger alert-dismissible">
+  {{ \Session::get('error') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div><br />
 @endif
+
 
 
 Seleccione el grupo con el que trabajará, actualmente esta seleccionado "{{$activo->nombre}} del {{$activo->grupo}}"<br>  
