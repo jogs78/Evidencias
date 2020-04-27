@@ -16,9 +16,15 @@ class Estudiante extends User
             $builder->where('rol', '=', 'estudiante');
         });
     }
+    public function cursos()
+    {
+        return 
+        $this->belongsToMany('App\Curso','curso_estudiante','estudiante_id', 'curso_id');
+    }
     public function cursos_actuales(){
         $hoy = date("Y-m-d");
-        return $this->belongsToMany('App\Curso','curso_estudiante','estudiante_id', 'curso_id')
+        return 
+        $this->belongsToMany('App\Curso','curso_estudiante','estudiante_id', 'curso_id')
         ->where('fecha_inicio', '<=', $hoy)
         ->where('fecha_fin', '>=', $hoy);
     }
@@ -28,10 +34,6 @@ class Estudiante extends User
         $this->belongsToMany('App\Curso','curso_estudiante','estudiante_id', 'curso_id')
         ->withPivot('calificacion_final')
         ->where('fecha_fin', '<', $hoy);
-    }
-    public function cursos()
-    {
-        return $this->belongsToMany('App\Curso','curso_estudiante','estudiante_id', 'curso_id');
     }
 
 }

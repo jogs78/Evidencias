@@ -1,6 +1,5 @@
 @extends('plantillas.plantilla_estudiante')
 @section('content')
-
   @foreach ($estudiante->cursos_pasados as $pasado)
     <div class="card">
       <div class="card-header">
@@ -25,8 +24,5 @@
        </ul>
     </div>
   </div>
-    
   @endforeach
-    
-
 @endsection

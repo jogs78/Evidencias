@@ -12,7 +12,6 @@ class EstudianteController extends Controller
     function entrega() {
         return view('estudiante.entrega');
     }
-
     function index() {
         $estudiante = Estudiante::find( Auth::user()->id );  
         return view('estudiante.estudiante', compact("estudiante"));
