@@ -58,6 +58,5 @@ class Curso extends Model
     }
     public function evidencias(){
         return $this->hasMany('App\Evidencia','dejado_en');
-
     }
 }

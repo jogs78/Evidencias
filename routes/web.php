@@ -27,7 +27,11 @@ Route::get('/aspecto/create/{rid}',  'docente\AspectoController@create')->middle
 Route::resource('evidencia', 'docente\EvidenciaController')->middleware('auth');
 
 Route::get('/estudiante', 'estudiante\EstudianteController@index')->middleware('auth');
-Route::get('/entrega', 'estudiante\EstudianteController@entrega');
+Route::get('/entregar/{eid}', 'estudiante\EstudianteController@entregar')->middleware('auth');
+Route::post('/entregar/{eid}', 'estudiante\EstudianteController@subir')->middleware('auth');
+
+
+
 Route::get('/historicoe','estudiante\EstudianteController@historicoe');
 
 

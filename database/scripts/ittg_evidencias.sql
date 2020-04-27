@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-04-2020 a las 05:39:33
+-- Tiempo de generación: 27-04-2020 a las 23:41:39
 -- Versión del servidor: 5.7.27-0ubuntu0.18.04.1
 -- Versión de PHP: 7.1.31-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ittg_evidencias`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asignaciones`
+--
+
+CREATE TABLE `asignaciones` (
+  `id` int(11) NOT NULL,
+  `cuando_entrego` timestamp NULL DEFAULT NULL,
+  `calificacion` float DEFAULT NULL,
+  `observaciones` varchar(100) DEFAULT NULL,
+  `archivo_entregado` varchar(100) DEFAULT NULL,
+  `quien_entrega` bigint(20) UNSIGNED NOT NULL,
+  `que_entrega` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `asignaciones`
+--
+
+INSERT INTO `asignaciones` (`id`, `cuando_entrego`, `calificacion`, `observaciones`, `archivo_entregado`, `quien_entrega`, `que_entrega`) VALUES
+(3, '2020-04-27 23:03:00', NULL, NULL, '3_5_Routes.pdf', 3, 5),
+(4, '2020-04-27 23:22:00', NULL, NULL, '3_4_Routes.pdf', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -72,9 +96,9 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`id`, `periodo`, `grupo`, `nombre`, `fecha_inicio`, `fecha_fin`, `descripcion`, `unidades`, `activo`, `docente_id`) VALUES
-(1, NULL, 's8a', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 1, 1),
+(1, NULL, 's8a', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 0, 1),
 (2, NULL, 's8a', 'Matemáticas', '2020-03-23', '2020-06-01', 'Matemáticas', 4, 0, 2),
-(3, NULL, 's8b', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 0, 1),
+(3, NULL, 's8b', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 1, 1),
 (4, NULL, 's9a', 'Programación con frameworks 19', '2019-08-05', '2019-12-20', 'Usar Laravel', 4, 0, 1);
 
 -- --------------------------------------------------------
@@ -86,16 +110,43 @@ INSERT INTO `cursos` (`id`, `periodo`, `grupo`, `nombre`, `fecha_inicio`, `fecha
 CREATE TABLE `curso_estudiante` (
   `id` int(10) UNSIGNED NOT NULL,
   `curso_id` bigint(20) UNSIGNED NOT NULL,
-  `estudiante_id` bigint(20) UNSIGNED NOT NULL
+  `estudiante_id` bigint(20) UNSIGNED NOT NULL,
+  `calificacion_final` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `curso_estudiante`
 --
 
-INSERT INTO `curso_estudiante` (`id`, `curso_id`, `estudiante_id`) VALUES
-(1, 3, 3),
-(2, 3, 4);
+INSERT INTO `curso_estudiante` (`id`, `curso_id`, `estudiante_id`, `calificacion_final`) VALUES
+(1, 3, 3, NULL),
+(2, 3, 4, NULL),
+(3, 4, 3, 'N.A');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `evidencias`
+--
+
+CREATE TABLE `evidencias` (
+  `id` int(11) NOT NULL,
+  `dejado_en` bigint(20) UNSIGNED NOT NULL,
+  `titulo` varchar(45) DEFAULT NULL,
+  `rubrica_usada` int(11) NOT NULL,
+  `unidad` int(11) NOT NULL,
+  `fundamentos` varchar(300) DEFAULT NULL,
+  `desarrollo` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `evidencias`
+--
+
+INSERT INTO `evidencias` (`id`, `dejado_en`, `titulo`, `rubrica_usada`, `unidad`, `fundamentos`, `desarrollo`) VALUES
+(1, 1, '101', 1, 1, '1', '1'),
+(4, 3, '101', 1, 1, 'i1', 'd1'),
+(5, 3, '102', 1, 1, 'i2', 'd2');
 
 -- --------------------------------------------------------
 
@@ -203,6 +254,14 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 
 --
+-- Indices de la tabla `asignaciones`
+--
+ALTER TABLE `asignaciones`
+  ADD PRIMARY KEY (`id`,`quien_entrega`,`que_entrega`),
+  ADD KEY `fk_asignaciones_users1_idx` (`quien_entrega`),
+  ADD KEY `fk_asignaciones_evidencias1_idx` (`que_entrega`);
+
+--
 -- Indices de la tabla `aspectos`
 --
 ALTER TABLE `aspectos`
@@ -223,6 +282,15 @@ ALTER TABLE `curso_estudiante`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_curso_estudiante_cursos1_idx` (`curso_id`),
   ADD KEY `fk_curso_estudiante_users1_idx` (`estudiante_id`);
+
+--
+-- Indices de la tabla `evidencias`
+--
+ALTER TABLE `evidencias`
+  ADD PRIMARY KEY (`id`,`dejado_en`,`rubrica_usada`),
+  ADD UNIQUE KEY `titulo_UNIQUE` (`dejado_en`,`titulo`) USING BTREE,
+  ADD KEY `fk_evidencias_cursos1_idx` (`dejado_en`),
+  ADD KEY `fk_evidencias_rubricas1_idx` (`rubrica_usada`);
 
 --
 -- Indices de la tabla `failed_jobs`
@@ -247,7 +315,7 @@ ALTER TABLE `password_resets`
 --
 ALTER TABLE `rubricas`
   ADD PRIMARY KEY (`id`,`autor`),
-  ADD KEY `fk_rubricas_users1_idx` (`autor`);
+  ADD KEY `fk_rubricas_users1_idx1` (`autor`);
 
 --
 -- Indices de la tabla `users`
@@ -261,6 +329,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `asignaciones`
+--
+ALTER TABLE `asignaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `aspectos`
 --
 ALTER TABLE `aspectos`
@@ -270,13 +344,19 @@ ALTER TABLE `aspectos`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `curso_estudiante`
 --
 ALTER TABLE `curso_estudiante`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `evidencias`
+--
+ALTER TABLE `evidencias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -307,23 +387,30 @@ ALTER TABLE `users`
 --
 
 --
+-- Filtros para la tabla `asignaciones`
+--
+ALTER TABLE `asignaciones`
+  ADD CONSTRAINT `fk_asignaciones_evidencias1` FOREIGN KEY (`que_entrega`) REFERENCES `evidencias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_asignaciones_users1` FOREIGN KEY (`quien_entrega`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `aspectos`
 --
 ALTER TABLE `aspectos`
   ADD CONSTRAINT `fk_aspectos_rubricas2` FOREIGN KEY (`rubrica_id`) REFERENCES `rubricas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `cursos`
---
-ALTER TABLE `cursos`
-  ADD CONSTRAINT `fk_cursos_users1_idx` FOREIGN KEY (`docente_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `curso_estudiante`
 --
 ALTER TABLE `curso_estudiante`
-  ADD CONSTRAINT `fk_curso_estudiante_cursos1_idx` FOREIGN KEY (`curso_id`) REFERENCES `cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_curso_estudiante_users1_idx` FOREIGN KEY (`estudiante_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_curso_estudiante_cursos1_idx` FOREIGN KEY (`curso_id`) REFERENCES `cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `evidencias`
+--
+ALTER TABLE `evidencias`
+  ADD CONSTRAINT `fk_evidencias_cursos1` FOREIGN KEY (`dejado_en`) REFERENCES `cursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_evidencias_rubricas1` FOREIGN KEY (`rubrica_usada`) REFERENCES `rubricas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `rubricas`

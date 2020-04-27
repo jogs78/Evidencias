@@ -19,7 +19,7 @@
     <div class="card-body">
       <ul>
         @foreach ($actual->evidencias as $evidencia)
-         <li><a href="/entregar">{{$evidencia->titulo}}</a></li>          
+         <li><a href="/entregar/{{$evidencia->id}}">{{$evidencia->titulo}}</a></li>          
         @endforeach
        </ul>
     </div>
