@@ -83,7 +83,65 @@
                 <div class="title m-b-md">
                     EVIDENCIAS
                 </div>
+                requisitos:<br>
 
+                ACCIONES QUE REALIZA EL DOCENTE
+                <br>
+                 
+                
+                r1.   Al crear un curso debe especificar (se revisa el CRUD completo):<br>
+                
+                ·       No solo el nombre de la materia, tambien el grupo<br>
+                
+                ·       El perido estara dado por  las  fecha_inicio y fecha_fin<br>
+                
+                ·       Por default un grupo no esta activo hasta que los seleccionan<br>
+                
+                ·       El numero de unidades que tiene la materia<br>
+                
+                ·       El objetivo general que se busca cumplir en la materia (descripcion)<br><br>
+                
+                r2.   Activar un curso: esto signfica que le listara los cursos que el docente tenga activos (se encuentren en el periodo actual, es decir que la fecha de hoy se encuentre en el rango de las fechas de inicio y fin), solo puede haber un curso activo y este será en el que se asignen las evidencias, se pase lista, etc.<br>
+                
+                r3.   Al crear una RUBRICA (aparte de especificar su tipo y saber quien fue su autor) , se revisa que puedar realizar el CRUD completo<br>
+                
+                r4.   Para cada ASPECTO  de una rubrica debe establecer (se revisa el CRUD completo):<br>
+                
+                ·       Titulo (criterio)<br>
+                
+                ·       Porcentaje de la calificación que dado a este aspecto (poderacion)<br>
+                
+                ·       Descripcion de cómo debe ser para que tenga una aceptacion optima (aceptacion_optima)<br>
+                
+                ·       Descripcion de cómo debe ser para que tenga una aceptacion media (aceptacion_ media)<br>
+                
+                ·       Descripcion de cómo debe ser para que no tenga aceptacion (aceptacion_ nula)<br><br>
+                
+                 
+                
+                r5.   Al crear una EVIDENCIA debe especificar:<br>
+                
+                ·       El TIPO DE EVIDENCIA (es decir que tipo de rubrica se usará):<br>
+                
+                ·       El numero de unidad en la matería<br>
+                
+                ·       Los aspectos a investigar<br>
+                
+                ·       Los aspectos a demostrar<br><br>
+                
+                 
+                
+                ACCIONES QUE REALIZA EL ESTUDIANTE<br>
+                
+                 
+                
+                r11. Puede conocer un historico de cursos en los que estubo matriculado y ya han terminado, conociendo en este caso su calificación<br>
+                
+                r12. Puede conocer los cursos en los que esta matriculado, en estos podra ver las evidencias que han quedado y en este listado puede:<br>
+                
+                ·       Entregar una evidencia, si ya la entrego podra ver la fecha en que subio el archivo, si tiene calificacion y observaciones<br>
+                
+                 
             </div>
         </div>
     </body>
