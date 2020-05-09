@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Estudiante;
 class Matriculacion extends Model
 {
     protected $table='curso_estudiante';
@@ -12,5 +12,8 @@ class Matriculacion extends Model
      ];
      public $timestamps =false;
 
-    //
-}
+     public function estudiante()
+     {
+         return $this->hasOne('App\Estudiante', 'id', 'estudiante_id');
+     } 
+ }

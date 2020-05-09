@@ -3,6 +3,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+use Illuminate\Database\Eloquent\Builder;
+
+
+
 class Curso extends Model
 {
     /*En este caso no tenemos problema la tabla en la base de datos se llama cursos pero si se llamase
@@ -30,21 +34,11 @@ class Curso extends Model
         else $Periodo = "Agosto - Diciembre de $agno";
         return $Periodo;
     }
-    //en la calse curso
+
     public function estudiantes()
     {
-        //return $this->belongsToMany('App\Estudiante');
-        /* por convencion buscara: en la tabla curso_estudiante que contenga los campos
-        curso_id y estudiante_id ejecutando la siguiente consulta
-        
-        select `estudiantes`.*, `curso_estudiante`.`curso_id` as `pivot_curso_id`, `curso_estudiante`.`estudiante_id` as `pivot_estudiante_id` 
-        from `estudiantes` inner join `curso_estudiante` on `estudiantes`.`id` = `curso_estudiante`.`estudiante_id` 
-        where `curso_estudiante`.`curso_id` = 2
-        
-        pero existen otras formas de usar la funcion cuando tus tablas no cumplen las convenciones (nombres de tablas y nombres de campos)
-        */
-        return $this->belongsToMany('App\User','curso_estudiante','curso_id', 'estudiante_id');
-
+        return $this->belongsToMany('App\User','curso_estudiante','curso_id', 'estudiante_id')
+        ->withPivot('id');
     }
 
     public function docente(){
@@ -59,4 +53,14 @@ class Curso extends Model
     public function evidencias(){
         return $this->hasMany('App\Evidencia','dejado_en');
     }
+
+    public function no_matriculados(){
+        return Estudiante::whereDoesntHave('cursos', function (Builder $query) {
+            $query->where('curso_id', $this->id );
+        })->get();
+
+    }
+
+
+
 }

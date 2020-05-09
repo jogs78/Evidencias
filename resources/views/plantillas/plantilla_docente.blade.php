@@ -7,6 +7,7 @@
     <script src="/js/popper.js"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/axios.min.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
@@ -22,6 +23,16 @@
                 <li class="nav-item">
                   <a class="nav-link"   href="/curso">Curso</a>
                 </li>
+                <li class="nav-item dropdown">
+                  <a id="curso_activo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    Curso Activo
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="curso_activo">
+                    <a class="dropdown-item"   href="/matricular">Matricular</a>
+                  </div>
+
+                </li>
+
               </ul>
 
               <ul class="navbar-nav ml-auto">
@@ -50,4 +61,5 @@
             @yield('content')    
           </div>
 </body>
+@yield('codigo')
 </html>

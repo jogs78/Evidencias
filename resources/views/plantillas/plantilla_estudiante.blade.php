@@ -7,6 +7,7 @@
     <script src="/js/popper.js"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/axios.min.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
@@ -43,4 +44,5 @@
             @yield('content')    
           </div>
 </body>
+@yield('codigo')
 </html>

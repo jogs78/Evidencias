@@ -124,16 +124,6 @@ class CursoController extends Controller
 
 
 
-    function matricular($id){
-        $curso =  Curso::find($id);
-        return view('docente.curso.matricular',compact("curso"));
-
-    }
-    function lista($id){
-        $curso =  Curso::find($id);
-        return view('docente.curso.lista',compact("curso"));
-
-    }
     function seleccionar() {
         $hoy = date("Y-m-d");
         $cursos  = Curso::
@@ -172,6 +162,5 @@ class CursoController extends Controller
             return redirect("/seleccionar")->with("error","No se pudo activar el grupo por: $error");
         }
     } 
-
 
 }
