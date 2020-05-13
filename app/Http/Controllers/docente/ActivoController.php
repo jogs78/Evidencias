@@ -5,6 +5,7 @@ namespace App\Http\Controllers\docente;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Matriculacion;
+use App\Asistencia;
 
 class ActivoController extends Controller
 {
@@ -15,13 +16,37 @@ class ActivoController extends Controller
         return view('docente.curso_activo.matricular',compact("activo"));
     }
 
-    function lista($id){
-        $curso =  Curso::find($id);
-        return view('docente.curso_activo.lista',compact("curso"));
+    function pasar_lista(){
+        if (!\Session::has('activo')) return redirect("/seleccionar")->with('warning','Seleccione el grupo activo o vuelva a intentar');
+        $activo = \Session::get('activo');
+        $activo->refresh();
+        return view('docente.curso_activo.pasar_lista',compact("activo"));
     }
 
 
     //funcion que se llama solo por ajax
+    
+    function asistencia(Request $request, $mid){
+        try {
+            if (!\Session::has('activo')){
+                return response()->json([],401) ;
+            }
+            $activo = \Session::get('activo');
+
+            $asistencia = new Asistencia;
+            $asistencia->matriculacion=$mid;
+            $asistencia->fill($request->all());
+            $asistencia->save();
+            $a = $asistencia->toArray();
+//            $a = $request->all();
+            return response()->json($a,200) ;
+        }catch (\Illuminate\Database\QueryException $e){
+            return response()->json(["error"=>"Error ". $e->getMessage()],409) ;
+        }catch (\Exception $e){
+            return response()->json(["Otro error"],500) ;
+        }
+    }
+
     function agregar(Request $request, $ide){
         try {
             if (!\Session::has('activo')){

@@ -139,6 +139,8 @@ class CursoController extends Controller
         ->where('activo', 1)
         ->first();
 
+        /*aqui no se considera si el activo ya quedo fuera de tiempo*/
+
         \Session::put('activo' ,  $activo );
         return view('docente.curso.seleccionar',compact("cursos","activo"));
     }

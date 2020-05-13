@@ -29,6 +29,7 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="curso_activo">
                     <a class="dropdown-item"   href="/matricular">Matricular</a>
+                    <a class="dropdown-item"   href="/pasar_lista">Pasar Lista</a>
                   </div>
 
                 </li>

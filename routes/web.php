@@ -33,6 +33,9 @@ Route::post('/entregar/{eid}', 'estudiante\EstudianteController@subir')->middlew
 Route::get('/matricular','docente\ActivoController@matricular')->middleware('auth');
 Route::get('/agregar/{ide}' ,'docente\ActivoController@agregar')->middleware('auth');
 Route::delete('/quitar/{mid}' ,'docente\ActivoController@quitar')->middleware('auth');
+Route::get('/pasar_lista','docente\ActivoController@pasar_lista')->middleware('auth');
+Route::post('/asistencia/{mid}','docente\ActivoController@asistencia')->middleware('auth');
+
 
 //Route::get('/lista/{curso}',    'docente\CursoController@lista');
 
