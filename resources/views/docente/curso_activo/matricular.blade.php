@@ -1,6 +1,7 @@
 @extends('plantillas.plantilla_docente')
 @section('content')
 <br>
+
 <h5 class="card-title">Lista de "{{$activo->nombre}}" del grupo "{{$activo->grupo}}"</h5><br>
 
 <table class="table" border="1" id="lista_matriculas">
@@ -98,7 +99,11 @@ $().ready(function(){
     $("#lista_matriculas >tbody ").on("click", ".quitar" , function (e){
             e.preventDefault(); 
             id = this.id;
-            axios.get('/quitar/' + id )
+            axios.delete('/quitar/' + id , {
+                                                params: {
+                                                    _token:  '{{ csrf_token() }}'
+                                                }
+                                           })
             .then(function (response) {
                 $('#lista_matriculas > tbody > tr#' + response.data.id ).remove();
                 alert("Se ha modificado la lista de estudiantes, debe cargar de nuevo la página para poder matricular");

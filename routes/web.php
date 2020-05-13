@@ -32,7 +32,7 @@ Route::post('/entregar/{eid}', 'estudiante\EstudianteController@subir')->middlew
 
 Route::get('/matricular','docente\ActivoController@matricular')->middleware('auth');
 Route::get('/agregar/{ide}' ,'docente\ActivoController@agregar')->middleware('auth');
-Route::get('/quitar/{mid}' ,'docente\ActivoController@quitar')->middleware('auth');
+Route::delete('/quitar/{mid}' ,'docente\ActivoController@quitar')->middleware('auth');
 
 //Route::get('/lista/{curso}',    'docente\CursoController@lista');
 
