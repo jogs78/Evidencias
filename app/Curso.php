@@ -38,7 +38,7 @@ class Curso extends Model
     public function estudiantes()
     {
         return $this->belongsToMany('App\User','curso_estudiante','curso_id', 'estudiante_id')
-        ->withPivot('id');
+        ->withPivot('id','equipo');
     }
 
     public function docente(){

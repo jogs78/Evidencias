@@ -35,6 +35,8 @@ Route::get('/agregar/{ide}' ,'docente\ActivoController@agregar')->middleware('au
 Route::delete('/quitar/{mid}' ,'docente\ActivoController@quitar')->middleware('auth');
 Route::get('/pasar_lista','docente\ActivoController@pasar_lista')->middleware('auth');
 Route::post('/asistencia/{mid}','docente\ActivoController@asistencia')->middleware('auth');
+Route::get('/equipos','docente\ActivoController@equipos')->middleware('auth');
+Route::put('/agrupar/{mid}','docente\ActivoController@agrupar')->middleware('auth');
 
 
 //Route::get('/lista/{curso}',    'docente\CursoController@lista');

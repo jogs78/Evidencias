@@ -22,6 +22,14 @@ class ActivoController extends Controller
         $activo->refresh();
         return view('docente.curso_activo.pasar_lista',compact("activo"));
     }
+    
+    function equipos(){
+        if (!\Session::has('activo')) return redirect("/seleccionar")->with('warning','Seleccione el grupo activo o vuelva a intentar');
+        $activo = \Session::get('activo');
+        $activo->refresh();
+        return view('docente.curso_activo.equipos',compact("activo"));
+    }
+    
 
 
     //funcion que se llama solo por ajax
@@ -84,8 +92,27 @@ class ActivoController extends Controller
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(["error"=>"Error ". $e->getMessage()],409) ;
         }
-/*      }catch (\Exception $e){
-            return response()->json(["error"=>"Otro error"],500) ;
-        }*/
     }
+
+    function agrupar(Request $request, $mid){
+        try {
+            if (!\Session::has('activo')){
+                return response()->json([],401) ;
+            }
+            $activo = \Session::get('activo');
+
+            $matriculacion =  Matriculacion::find($mid);
+            $matriculacion->equipo =  $request->input('equipo');
+            $matriculacion->save();
+            $a = $matriculacion->toArray();
+            //$a = $request->all();
+            return response()->json($a,200) ;
+        }catch (\Illuminate\Database\QueryException $e){
+            return response()->json(["error"=>"Error ". $e->getMessage()],409) ;
+        }catch (\Exception $e){
+            return response()->json(["Otro error"],500) ;
+        }
+    }
+
+
 }
