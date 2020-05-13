@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-04-2020 a las 23:41:39
+-- Tiempo de generación: 13-05-2020 a las 22:10:04
 -- Versión del servidor: 5.7.27-0ubuntu0.18.04.1
 -- Versión de PHP: 7.1.31-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -45,6 +45,19 @@ CREATE TABLE `asignaciones` (
 INSERT INTO `asignaciones` (`id`, `cuando_entrego`, `calificacion`, `observaciones`, `archivo_entregado`, `quien_entrega`, `que_entrega`) VALUES
 (3, '2020-04-27 23:03:00', NULL, NULL, '3_5_Routes.pdf', 3, 5),
 (4, '2020-04-27 23:22:00', NULL, NULL, '3_4_Routes.pdf', 3, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asistencias`
+--
+
+CREATE TABLE `asistencias` (
+  `id` int(11) NOT NULL,
+  `matriculacion` int(10) UNSIGNED NOT NULL,
+  `fecha` varchar(45) NOT NULL,
+  `asistencia` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -98,8 +111,9 @@ CREATE TABLE `cursos` (
 INSERT INTO `cursos` (`id`, `periodo`, `grupo`, `nombre`, `fecha_inicio`, `fecha_fin`, `descripcion`, `unidades`, `activo`, `docente_id`) VALUES
 (1, NULL, 's8a', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 0, 1),
 (2, NULL, 's8a', 'Matemáticas', '2020-03-23', '2020-06-01', 'Matemáticas', 4, 0, 2),
-(3, NULL, 's8b', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 1, 1),
-(4, NULL, 's9a', 'Programación con frameworks 19', '2019-08-05', '2019-12-20', 'Usar Laravel', 4, 0, 1);
+(3, NULL, 's8b', 'Programación con frameworks', '2020-03-23', '2020-06-01', 'Usar LARAVEL y otras practicas de programación web', 4, 0, 1),
+(4, NULL, 's9a', 'Programación con frameworks 19', '2019-08-05', '2019-12-20', 'Usar Laravel', 4, 0, 1),
+(5, NULL, NULL, 'prueba', '2020-03-23', '2020-06-11', NULL, 4, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -111,17 +125,22 @@ CREATE TABLE `curso_estudiante` (
   `id` int(10) UNSIGNED NOT NULL,
   `curso_id` bigint(20) UNSIGNED NOT NULL,
   `estudiante_id` bigint(20) UNSIGNED NOT NULL,
-  `calificacion_final` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `calificacion_final` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `equipo` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `curso_estudiante`
 --
 
-INSERT INTO `curso_estudiante` (`id`, `curso_id`, `estudiante_id`, `calificacion_final`) VALUES
-(1, 3, 3, NULL),
-(2, 3, 4, NULL),
-(3, 4, 3, 'N.A');
+INSERT INTO `curso_estudiante` (`id`, `curso_id`, `estudiante_id`, `calificacion_final`, `equipo`) VALUES
+(1, 3, 3, NULL, 0),
+(2, 3, 4, NULL, 0),
+(3, 4, 3, 'N.A', 0),
+(40, 3, 5, NULL, 0),
+(46, 5, 3, NULL, 1),
+(47, 5, 4, NULL, 2),
+(49, 5, 5, NULL, 15);
 
 -- --------------------------------------------------------
 
@@ -229,7 +248,7 @@ INSERT INTO `rubricas` (`id`, `tipo_de`, `autor`) VALUES
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -262,6 +281,14 @@ ALTER TABLE `asignaciones`
   ADD KEY `fk_asignaciones_evidencias1_idx` (`que_entrega`);
 
 --
+-- Indices de la tabla `asistencias`
+--
+ALTER TABLE `asistencias`
+  ADD PRIMARY KEY (`id`,`matriculacion`),
+  ADD UNIQUE KEY `asistencia` (`matriculacion`,`fecha`),
+  ADD KEY `fk_asistencias_curso_estudiante1_idx` (`matriculacion`);
+
+--
 -- Indices de la tabla `aspectos`
 --
 ALTER TABLE `aspectos`
@@ -280,6 +307,7 @@ ALTER TABLE `cursos`
 --
 ALTER TABLE `curso_estudiante`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `matriculacion_unica` (`curso_id`,`estudiante_id`),
   ADD KEY `fk_curso_estudiante_cursos1_idx` (`curso_id`),
   ADD KEY `fk_curso_estudiante_users1_idx` (`estudiante_id`);
 
@@ -335,6 +363,12 @@ ALTER TABLE `asignaciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `asistencias`
+--
+ALTER TABLE `asistencias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- AUTO_INCREMENT de la tabla `aspectos`
 --
 ALTER TABLE `aspectos`
@@ -344,13 +378,13 @@ ALTER TABLE `aspectos`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `curso_estudiante`
 --
 ALTER TABLE `curso_estudiante`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `evidencias`
@@ -392,6 +426,12 @@ ALTER TABLE `users`
 ALTER TABLE `asignaciones`
   ADD CONSTRAINT `fk_asignaciones_evidencias1` FOREIGN KEY (`que_entrega`) REFERENCES `evidencias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_asignaciones_users1` FOREIGN KEY (`quien_entrega`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `asistencias`
+--
+ALTER TABLE `asistencias`
+  ADD CONSTRAINT `fk_asistencias_curso_estudiante1` FOREIGN KEY (`matriculacion`) REFERENCES `curso_estudiante` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `aspectos`

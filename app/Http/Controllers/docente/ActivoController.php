@@ -46,7 +46,6 @@ class ActivoController extends Controller
             $asistencia->fill($request->all());
             $asistencia->save();
             $a = $asistencia->toArray();
-//            $a = $request->all();
             return response()->json($a,200) ;
         }catch (\Illuminate\Database\QueryException $e){
             return response()->json(["error"=>"Error ". $e->getMessage()],409) ;
