@@ -8,7 +8,7 @@ class Matriculacion extends Model
 {
     protected $table='curso_estudiante';
     protected $fillable = [
-         'curso_id', 'estudiante_id'
+          'curso_id', 'estudiante_id', 'calificacion_final', 'equipo'
      ];
      public $timestamps =false;
 

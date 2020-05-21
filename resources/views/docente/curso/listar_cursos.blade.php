@@ -33,7 +33,6 @@
       <td>
         @if (!$curso->historico())
         <a href="/curso/{{$curso->id}}/edit" class="btn btn-primary"  style="display: inline">Editar</a>
-        <a href="/matricular/{{$curso->id}}" class="btn btn-info"  style="display: inline">Matricular</a>
           @can('eliminar', $curso)
           <form action="/curso/{{$curso->id}}" method="post"  style="display: inline">
             @csrf

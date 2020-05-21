@@ -17,8 +17,10 @@ class CursoPolicy
     public function __construct()
     {
     }
-    //para saber si puede editar, el primer parametro es el usuario que actualmente esta usando el sistema
-    //puede dependiendo del resultado, si retorna true o false
+    //para saber si puede realizar la acion se ejecuta la siguiente fucion,
+    //el primer parametro es el usuario que actualmente esta usando el sistema
+    //el segundo parametro es una instancia del modelo en el que se esta trabajando, 
+    //puede realizar la acion si el resultado es ________
     public function edit(User $authUser, Curso $materia )
     {
         return $authUser->id == $materia->docente_id;

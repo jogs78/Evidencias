@@ -20,9 +20,9 @@
     <tbody>
         @forelse ($activo->estudiantes as $estudiante)
         <tr>
-            <td>{{$estudiante->name}}({{$estudiante->email}})</td>
+            <td></td>
             <td>  
-                    <div id="{{$estudiante->pivot->id}}" class="equipo">
+                    <div id="{{$estudiante->pivot->calificacion_final}}" class="equipo">
                         {{$estudiante->pivot->equipo}}
                     </div>
             </td>
